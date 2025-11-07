@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Instructions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Project Instructions</h1>
+    <nav class="page-links">
+      <a href="index.html">Home</a>
+      <a href="setup.html">Setup Guide</a>
+      <a href="collaboration.html">Collaboration</a>
+      <a href="instructions.html" aria-current="page">Project Instructions</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Payroll Computation Using Functions</h2>
+      <p><strong>Course:</strong> COPROG1</p>
+
+      <hr>
+      <section>
+        <h3>Requirements</h3>
+        <ul>
+          <li>Create a program to compute an employee's monthly salary.</li>
+          <li>User inputs hours worked per week (4 weeks per month).</li>
+          <li>Save as <code>finalCode-&lt;section&gt;-&lt;GroupNo&gt;.java</code> (e.g., <code>finalCode-c1a-GRP1.java</code>).</li>
+          <li><strong>Use functions in your solution.</strong></li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Computation & Deductions</h3>
+        <ul>
+          <li>Regular: 40 hours/week. Overtime: &gt;40 hours/week (paid 125% rate).</li>
+          <li>Gross pay = (rate × regular hours) + overtime pay.</li>
+          <li>Deductions: SSS, Pag-IBIG, PhilHealth.</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>SSS Contribution</h3>
+        <table class="project-table">
+          <thead>
+            <tr><th>Gross Pay (GP)</th><th>SSS Computation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GP ≤ 5,000</td><td>Php 105.00</td></tr>
+            <tr><td>5,001 – 10,000</td><td>5% of GP</td></tr>
+            <tr><td>10,001 – 15,000</td><td>8% of GP + P75</td></tr>
+            <tr><td>&gt; 15,000</td><td>12% of GP + P110</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Pag-IBIG Contribution</h3>
+        <ul>
+          <li>GP &lt; 5,000: P100.00</li>
+          <li>GP &gt; 5,000: 3% of GP</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>PhilHealth Contribution</h3>
+        <ul>
+          <li>P120.00 (if hours worked ≥ 10)</li>
+          <li>0 (if hours worked &lt; 10)</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Tax Computation</h3>
+        <table class="project-table">
+          <thead>
+            <tr><th>Gross Pay (GP)</th><th>Tax Computation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GP ≤ 10,000</td><td>3% of GP</td></tr>
+            <tr><td>10,001 – 25,000</td><td>8% of GP</td></tr>
+            <tr><td>25,001 – 40,000</td><td>11% of GP</td></tr>
+            <tr><td>&gt; 40,000</td><td>13.5% of GP</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Other Allowances & Deductions</h3>
+        <ul>
+          <li>Manager: P5,000/week transport allowance.</li>
+          <li>Dependent: Deduct P1,000 for each dependent.</li>
+          <li>Net salary = gross pay – total deductions.</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Employee Info & Output</h3>
+        <ul>
+          <li>Input: Last Name, First Name, Middle Name, Department, Position, Rate/hour, Hours worked.</li>
+          <li>Output: Pay slip with info, salary details, gross pay, net pay.</li>
+          <li>Option to run again or exit.</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Required Functions</h3>
+        <ul>
+          <li><code>computeGP</code> – gross pay</li>
+          <li><code>computeDed</code> – total deductions</li>
+          <li><code>computeNP</code> – net pay</li>
+          <li>All must <strong>return a value</strong>.</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Documentation</h3>
+        <ul>
+          <li>Description of the program</li>
+          <li>Program design: IPO chart, flowchart</li>
+          <li>Inventory: variables/functions with descriptions</li>
+          <li>Sample output (screenshots)</li>
+          <li>Save as <code>finalDocu-&lt;section&gt;-&lt;GroupNo&gt;</code> (PDF for Canvas)</li>
+        </ul>
+      </section>
+
+      <hr>
+      <section>
+        <h3>Grading Criteria</h3>
+        <ul>
+          <li>Documentation – 30 pts (Flowchart 15, Completeness 10, Organization 5)</li>
+          <li>Program – 50 pts (Functionality 25, Requirements 10, Functions 15)</li>
+          <li><strong>Total: 80 pts</strong></li>
+        </ul>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>See your instructor for questions about the project.</p>
+  </footer>
+</body>
+</html>
