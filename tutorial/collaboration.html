@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaboration Guide</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header>
+        <h1>Collaboration Guide</h1>
+        <p>Work together safely: make a branch, open a pull request, keep in sync, resolve conflicts. Use the cheat sheet anytime.</p>
+    </header>
+    <main>
+        <nav class="page-links">
+            <a href="index.html">Home</a>
+            <a href="setup.html">Setup Guide</a>
+        </nav>
+        <div class="layout">
+        <section class="content">
+            <h2>Steps</h2>
+            <ul class="accordion">
+                <li>
+                    <details>
+                        <summary>1. Create a branch & first commit</summary>
+                        <p><strong>Why:</strong> A branch is your own copy. Don't commit to <code>main</code>.</p>
+                        <p>Do this flow: get latest main → make a branch → edit → save with a commit → push:</p>
+                        <h4>Get latest main</h4>
+                        <div class="codeblock">
+  <span class="cmd">git checkout main<span class="tooltip">Go to the main project.</span></span>
+  <span class="cmd">git pull origin main<span class="tooltip">Get the newest files from the team.</span></span>
+</div>
+                        <h4>Create a branch</h4>
+                        <div class="codeblock">
+  <span class="cmd">git checkout -b feature/yourname-task<span class="tooltip">Make your own copy to work on.</span></span>
+</div>
+                        <h4>See what's changed</h4>
+                        <div class="codeblock">
+  <span class="cmd">git status<span class="tooltip">Show what you changed.</span></span>
+</div>
+                        <h4>Stage and commit</h4>
+                        <div class="codeblock">
+  <span class="cmd">git add .<span class="tooltip">Get your changes ready to save.</span></span>
+  <span class="cmd">git commit -m "feat: add basic tax calculation"<span class="tooltip">Save your work with a note.</span></span>
+</div>
+                        <h4>Push your branch</h4>
+                        <div class="codeblock">
+  <span class="cmd">git push -u origin feature/yourname-task<span class="tooltip">Send your work to the team online.</span></span>
+</div>
+                        <p>After pushing, click "Compare &amp; pull request" on GitHub to propose your changes.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>2. Open a Pull Request</summary>
+                        <p><strong>Why:</strong> A PR is a request for review before merging to <code>main</code>.</p>
+                        <p>In GitHub: open the repo → “Compare &amp; pull request” (or Pull requests → New). Use a clear title and a short description like:</p>
+                        <pre><code>Implements basic tax rate (10%) applied to gross salary.
+Updated computeNetPay() and added helper computeTax().
+Test: Run program; enter sample salary 1000 → tax 100, net 900.
+No external dependencies added.</code></pre>
+                        <p>Add reviewers, then Create pull request. If someone requests changes, commit and push—your PR updates automatically.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>3. Sync with main</summary>
+                        <p><strong>Why:</strong> Main changes while you work; syncing avoids conflicts.</p>
+                        <p>Do this before pushing and at the end of the day:</p>
+                        <pre><code>git checkout main
+git pull origin main
+git checkout feature/yourname-task
+git merge main</code></pre>
+                        <p>If conflicts appear, use the conflict steps below.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>4. Merge vs rebase</summary>
+                        <p><strong>Merge</strong> = simple history. <strong>Rebase</strong> = tidy history (advanced).</p>
+                        <h4>Merge main into your branch (safe)</h4>
+                        <pre><code>git checkout feature/yourname-task
+git merge main</code></pre>
+                        <h4>Rebase (optional advanced)</h4>
+                        <pre><code>git checkout feature/yourname-task
+git rebase main</code></pre>
+                        <p><em>If conflicts:</em> fix files → <code>git add</code> fixed files → <code>git rebase --continue</code></p>
+                        <p><strong>Never</strong> rebase the shared <code>main</code> branch.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>5. Resolve merge conflicts</summary>
+                        <p><strong>Conflict:</strong> Two edits on same lines; choose or combine.</p>
+                        <h4>See conflicts</h4>
+                        <pre><code>git status</code></pre>
+                        <p>Open files in VS Code and choose Incoming/Current or edit manually:</p>
+                        <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Your branch version
+=======
+Incoming (main) version
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code></pre>
+                        <h4>Stage resolved files</h4>
+                        <pre><code>git add path/to/file</code></pre>
+                        <h4>Finish merge</h4>
+                        <pre><code>git commit</code></pre>
+                        <h4>Or continue a rebase</h4>
+                        <pre><code>git rebase --continue</code></pre>
+                        <h4>Finally push</h4>
+                        <pre><code>git push</code></pre>
+                        <p><strong>Avoid conflicts:</strong> Pull often; keep branches small (1 feature); communicate with teammates about files you’ll modify.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>6. After merge</summary>
+                        <p><strong>Goal:</strong> Update local <code>main</code> and remove old branch.</p>
+                        <ol>
+                            <li>Switch to main and pull latest (your PR + others):</li>
+                        </ol>
+                        <pre><code>git checkout main
+git pull origin main</code></pre>
+                        <ol start="2">
+                            <li>Optionally delete your branch locally and remotely:</li>
+                        </ol>
+                        <pre><code>git branch -d feature/yourname-task
+git push origin --delete feature/yourname-task</code></pre>
+                        <p>Create a new branch for the next change—never recycle old ones.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>7. Common errors</summary>
+                        <ul>
+                            <li><code>fatal: not a git repository</code> – You’re in the wrong folder. Go to the project root.</li>
+                            <li><code>authentication failed</code> – Wrong credentials or expired token. Generate a new personal access token (PAT) and use it as password for HTTPS.</li>
+                            <li><code>Updates were rejected because the remote contains work...</code> – You didn’t pull changes before pushing. Run <code>git pull --rebase origin main</code> (on main) or merge main into your branch.</li>
+                            <li><code>CONFLICT (content)</code> – You have a merge conflict. Follow the conflict resolution steps above.</li>
+                            <li><code>permission denied (publickey)</code> – SSH key missing. Either set up SSH keys or use HTTPS clone.</li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+            <div class="cta"><strong>Tip:</strong> When unsure, run <code>git status</code>. It tells you exactly what Git expects next. Head back to <a href="setup.html">Setup</a> if environment issues appear.</div>
+        </section>
+        <aside class="sidebar">
+<h3>Cheat Sheet</h3>
+<h4>Update main</h4>
+<div class="codeblock">
+  <span class="cmd">git checkout main<span class="tooltip">Go to the main project.</span></span>
+  <span class="cmd">git pull origin main<span class="tooltip">Get the newest files from the team.</span></span>
+</div>
+<h4>New branch</h4>
+<div class="codeblock">
+  <span class="cmd">git checkout -b feature/yourname-task<span class="tooltip">Make your own copy to work on.</span></span>
+</div>
+<h4>See status</h4>
+<div class="codeblock">
+  <span class="cmd">git status<span class="tooltip">Show what you changed.</span></span>
+</div>
+<h4>Stage & commit</h4>
+<div class="codeblock">
+  <span class="cmd">git add .<span class="tooltip">Get your changes ready to save.</span></span>
+  <span class="cmd">git commit -m "feat: describe change"<span class="tooltip">Save your work with a note.</span></span>
+</div>
+<h4>Push first time</h4>
+<div class="codeblock">
+  <span class="cmd">git push -u origin feature/yourname-task<span class="tooltip">Send your work to the team online.</span></span>
+</div>
+<h4>Merge main into branch</h4>
+<div class="codeblock">
+  <span class="cmd">git checkout main<span class="tooltip">Go to the main project.</span></span>
+  <span class="cmd">git pull origin main<span class="tooltip">Get the newest files from the team.</span></span>
+  <span class="cmd">git checkout feature/yourname-task<span class="tooltip">Go back to your copy.</span></span>
+  <span class="cmd">git merge main<span class="tooltip">Add the team's changes to your copy.</span></span>
+</div>
+<h4>Resolve conflicts</h4>
+<div class="codeblock">
+  <span class="cmd">git status<span class="tooltip">Show what you changed.</span></span>
+</div>
+<p style="font-size:13px; margin:4px 0;">Edit files to remove markers, then:</p>
+<div class="codeblock">
+  <span class="cmd">git add file<span class="tooltip">Get fixed files ready to save.</span></span>
+  <span class="cmd">git commit<span class="tooltip">Save your fixes.</span></span>
+</div>
+<h4>Rebase (optional)</h4>
+<div class="codeblock">
+  <span class="cmd">git checkout feature/yourname-task<span class="tooltip">Go back to your copy.</span></span>
+  <span class="cmd">git rebase main<span class="tooltip">Put the newest team changes in your copy.</span></span>
+  <span class="cmd">git rebase --continue<span class="tooltip">Finish fixing and saving.</span></span>
+</div>
+<h4>Delete after merge</h4>
+<div class="codeblock">
+  <span class="cmd">git checkout main<span class="tooltip">Go to the main project.</span></span>
+  <span class="cmd">git branch -d feature/yourname-task<span class="tooltip">Delete your copy from your computer.</span></span>
+  <span class="cmd">git push origin --delete feature/yourname-task<span class="tooltip">Delete your copy from the team online.</span></span>
+</div>
+        </aside>
+        </div>
+    </main>
+    <footer>
+        <p>Need clarification? Ask a teammate—or re-open a section above and read it slowly.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Setup Guide</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <h1>Project Setup</h1>
+    <p>Simplified steps to get the Java payroll project running.</p>
+</header>
+<main>
+    <nav class="page-links">
+        <a href="index.html">Home</a>
+        <a href="collaboration.html">Collaboration</a>
+    </nav>
+    <section>
+        <h2>Steps</h2>
+        <ul class="accordion">
+            <li>
+                <details>
+                    <summary>1. Install & configure Git</summary>
+                    <ul>
+                        <li>Create a GitHub account: <a href="https://github.com" target="_blank">github.com</a>.</li>
+                        <li>Install Git: <a href="https://git-scm.com/download/win" target="_blank">Download for Windows</a>.</li>
+                        <li>Open PowerShell and set your name & email:</li>
+                    </ul>
+                    <div class="codeblock">
+                      <span class="cmd">git config --global user.name "Your Name"<span class="tooltip">Tell Git your name.</span></span>
+                      <span class="cmd">git config --global user.email "you@example.com"<span class="tooltip">Tell Git your email.</span></span>
+                    </div>
+                    <p>Check:</p>
+                    <div class="codeblock">
+                      <span class="cmd">git config --list<span class="tooltip">Show your Git settings.</span></span>
+                      <span class="cmd">git --version<span class="tooltip">Show your Git version.</span></span>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>2. Install Java (JDK 17+)</summary>
+                    <ul>
+                        <li>Download Temurin 17: <a href="https://adoptium.net/temurin/releases/?version=17" target="_blank">link</a>.</li>
+                        <li>Keep defaults (add to PATH, set JAVA_HOME).</li>
+                        <li>Reopen PowerShell; verify:</li>
+                    </ul>
+                    <div class="codeblock">
+                      <span class="cmd">java -version<span class="tooltip">Check your Java version.</span></span>
+                      <span class="cmd">javac -version<span class="tooltip">Check your Java compiler version.</span></span>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>3. Install VS Code</summary>
+                    <ul>
+                        <li>Download: <a href="https://code.visualstudio.com" target="_blank">VS Code</a>.</li>
+                        <li>Extensions: Extension Pack for Java; (optional) GitLens.</li>
+                        <li>Increase font size in Settings if needed.</li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>4. Clone the repository</summary>
+                    <ul>
+                        <li>Go to a folder (e.g. Documents).</li>
+                        <li>Run:</li>
+                    </ul>
+                    <div class="codeblock">
+                      <span class="cmd">cd $env:USERPROFILE\Documents<span class="tooltip">Go to your Documents folder.</span></span>
+                      <span class="cmd">git clone https://github.com/yohannzapata/payroll-computation-using-functions.git<span class="tooltip">Copy the project to your computer.</span></span>
+                      <span class="cmd">cd payroll-computation-using-functions<span class="tooltip">Go into the project folder.</span></span>
+                      <span class="cmd">code .<span class="tooltip">Open the project in VS Code.</span></span>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>5. Compile & run</summary>
+                    <ul>
+                        <li>Open Main.java.</li>
+                        <li>In terminal:</li>
+                    </ul>
+                    <div class="codeblock">
+                      <span class="cmd">javac Main.java<span class="tooltip">Turn your code into a program.</span></span>
+                      <span class="cmd">java Main<span class="tooltip">Run your program.</span></span>
+                    </div>
+                    <p>Fix any syntax errors, then re-run.</p>
+                </details>
+            </li>
+        </ul>
+        <div class="cta">Setup done? Head to <a href="collaboration.html">Collaboration</a>.</div>
+    </section>
+</main>
+<footer>
+    <p>Need a hand? Ask a teammate.</p>
+</footer>
+</body>
+</html>
