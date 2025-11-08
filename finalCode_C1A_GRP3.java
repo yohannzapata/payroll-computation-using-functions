@@ -21,9 +21,9 @@ public class finalCode_C1A_GRP3 {
     public static int ratePerHour;
     public static int hoursWorked;
 
-    public static int grossPay;
-    public static int totalDeduction;
-    public static int netPay;
+    public static double grossPay;
+    public static double totalDeduction;
+    public static double netPay;
 
     public static void main(String[] args)
     {
@@ -66,17 +66,33 @@ public class finalCode_C1A_GRP3 {
     }
 
     // Gross Pay = Hourly Rate * Number of Hours Worked
-    public static int commputeGP()  {
+    public static double commputeGP()  {
         return ratePerHour * hoursWorked;
     }
     
     // Total Deductions = SSS + PhilHealth + Pag-IBIG
-    public static int computeDed() {
+    public static double computeDed() {
         return 0;
     }
 
     // Net Pay = Gross Pay - Deductions
-    public int computeNP(int amount) {
+    public double computeNP(int amount) {
         return commputeGP() - computeDed();
     }
+
+    // public static double SSSContribution() {
+        
+    // }
+
+    // public static double pagIBIGContribution() {
+
+    // }
+
+    // public static double philHealthContribution() {
+
+    // }
+
+    // public static double taxComputation() {
+
+    // }
 }
