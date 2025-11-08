@@ -12,6 +12,10 @@ public class Main
     public static int rate_per_hour;
     public static int num_of_hours_worked;
 
+    public static int gross_pay;
+    public static int total_deduction;
+    public static int net_pay;
+
     public static void main(String[] args)
     {
         employee_info();
@@ -50,5 +54,20 @@ public class Main
                 d. Net Pay
         */
 
+    }
+
+    // Gross Pay = Hourly Rate * Number of Hours Worked
+    public static int commpute_GP()  {
+        return rate_per_hour * num_of_hours_worked;
+    }
+    
+    // Total Deductions = SSS + PhilHealth + Pag-IBIG
+    public static int computeDed() {
+        return 0;
+    }
+
+    // Net Pay = Gross Pay - Deductions
+    public int computeNP(int amount) {
+        return commpute_GP() - computeDed();
     }
 }
