@@ -28,6 +28,7 @@ public class finalCode_C1A_GRP3 {
     public static void main(String[] args)
     {
         employeeInfo();
+        summaryPaySlip();
     }
 
     public static void employeeInfo() {
@@ -56,43 +57,68 @@ public class finalCode_C1A_GRP3 {
     }
 
     public static void summaryPaySlip() {
-        /* 
-            The program should display a summary or pay slip of an employee showing:
-                a. Employee Information
-                b. Details of the Salary Computation
-                c. Gross Pay
-                d. Net Pay
-        */
+        System.out.println("Details of the Salary Computation: ");
+        System.out.printf("Gross Pay: %.2f", computeGP());
+        System.out.printf("%nTotal Deduction: %.2f", computeDed());
+        System.out.printf("%nNet Pay: %.2f", computeNP());
+
     }
 
     // Gross Pay = Hourly Rate * Number of Hours Worked
-    public static double commputeGP()  {
+    public static double computeGP()  {
         return ratePerHour * hoursWorked;
     }
     
     // Total Deductions = SSS + PhilHealth + Pag-IBIG
     public static double computeDed() {
-        return 0;
+        return SSSContribution() + pagIBIGContribution() + taxComputation();
     }
 
     // Net Pay = Gross Pay - Deductions
-    public double computeNP(int amount) {
-        return commputeGP() - computeDed();
+    public static double computeNP() {
+        return computeGP() - computeDed();
     }
 
-    // public static double SSSContribution() {
+    public static double SSSContribution() {
+        if(computeGP() <= 5000) 
+            return 105;
+         else if(computeGP() > 5000 && computeGP() <= 10000) 
+            return computeGP() * 0.05f;
+         else if(computeGP() > 10000 && computeGP() <= 15000) 
+            return (computeGP() * 0.08f) + 75;
+         else if(computeGP() > 15000) 
+            return 110 * 0.12f;
         
-    // }
 
-    // public static double pagIBIGContribution() {
+        return 0;
+    }   
 
-    // }
+    public static double pagIBIGContribution() {
+        if(computeGP() < 5000) 
+            return 100;
+         else if(computeGP() > 5000) 
+            return computeGP() * 0.03f;
 
-    // public static double philHealthContribution() {
+        return 0;
+    }
 
-    // }
+    public static double philHealthContribution() {
+        if(hoursWorked >= 10)
+            return 120;
+        
+        return 0;
+    }
 
-    // public static double taxComputation() {
-
-    // }
+    public static double taxComputation() {
+        if(computeGP() <= 10000) 
+            return computeGP() * 0.03f;
+         else if(computeGP() > 10000 && computeGP() <= 25000) 
+            return computeGP() * 0.08f;
+         else if(computeGP() > 25000 && computeGP() <= 40000) 
+            return computeGP() * 0.11f;
+         else if(computeGP() > 40000) 
+            return computeGP() * 0.135f;
+        
+        return 0;
+    }
 }
