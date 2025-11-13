@@ -1,13 +1,11 @@
 /*
-    ==============================================
     COPROG1 C1A FINAL PROJECT
     PAYROLL COMPUTATION USING FUNCTIONS
-    ----------------------------------------------
+
     Group Members:
         Goza, Johann Laurenz J.
         Illana, Vince Justin A.
         Zapata, Yohann Joachim M.
-    ==============================================
 */
 
 import java.util.*;
@@ -22,16 +20,16 @@ public class finalCode_C1A_GRP3 {
     public static void main(String[] args) {
         do {
             System.out.println("=============================================");
-            System.out.println("        PAYROLL COMPUTATION SYSTEM");
-            System.out.println("---------------------------------------------");
+            System.out.println("        PAYROLL COMPUTATION SYSTEM           ");
+            System.out.println("=============================================");
 
             inputEmployeeInfo();
             printPayslip();
 
             System.out.print("\n>> Do you want to compute again? (Y/N): ");
         } while (sc.next().equalsIgnoreCase("Y"));
-
-
+        
+        System.out.println();
         System.out.println("=============================================");
         System.out.println("   Thank you for using the Payroll System!   ");
         System.out.println("=============================================");
@@ -39,7 +37,8 @@ public class finalCode_C1A_GRP3 {
 
     
     public static void inputEmployeeInfo() {
-        System.out.println("=========Enter Employee Information =========");
+        System.out.println();
+        System.out.println("-------- Enter Employee Information --------");
         System.out.print(">> Last Name               : ");
         lastName = sc.nextLine();
         System.out.print(">> First Name              : ");
@@ -61,11 +60,16 @@ public class finalCode_C1A_GRP3 {
     }
 
     public static double computeDed() {
-        return computeSSS(computeGP()) + computePagIBIG(computeGP()) + computePhilHealth() + computeTax(computeGP());
+        double totalDeduction = computeSSS(computeGP()) + 
+                                computePagIBIG(computeGP()) + 
+                                computePhilHealth() + 
+                                computeTax(computeGP());
+                                
+        return totalDeduction;
     }
 
-    public static double computeNP(double gp, double totalDeduction) {
-        return gp - totalDeduction;
+    public static double computeNP() {
+        return computeGP() - computeDed();
     }
 
     public static double computeSSS(double gp) {
@@ -99,15 +103,15 @@ public class finalCode_C1A_GRP3 {
         System.out.printf("Name        : %s, %s %s%n", lastName, firstName, middleName);
         System.out.printf("Department  : %s%n", department);
         System.out.printf("Position    : %s%n", position);
-        System.out.println("------------------------------------------|");
+        System.out.println("----------------------------------------------");
         System.out.printf("Gross Pay        : %.2f%n", computeGP());
         System.out.printf("SSS Contribution : %.2f%n", computeSSS(computeGP()));
         System.out.printf("Pag-IBIG         : %.2f%n", computePagIBIG(computeGP()));
         System.out.printf("PhilHealth       : %.2f%n", computePhilHealth());
         System.out.printf("Tax              : %.2f%n", computeTax(computeGP()));
-        System.out.println("------------------------------------------|");
+        System.out.println("----------------------------------------------");
         System.out.printf("Total Deduction  : %.2f%n", computeDed());
-        System.out.printf("Net Pay          : %.2f%n", computeNP(computeGP(), computeDed()));
+        System.out.printf("Net Pay          : %.2f%n", computeNP());
         System.out.println("==============================================");
     }
 }
