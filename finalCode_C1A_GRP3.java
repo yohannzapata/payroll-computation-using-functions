@@ -22,7 +22,8 @@ public class finalCode_C1A_GRP3 {
             System.out.println("=============================================");
             System.out.println("        PAYROLL COMPUTATION SYSTEM           ");
             System.out.println("=============================================");
-
+            System.out.println();
+            
             inputEmployeeInfo();
             printPayslip();
 
@@ -37,7 +38,6 @@ public class finalCode_C1A_GRP3 {
 
     
     public static void inputEmployeeInfo() {
-        System.out.println();
         System.out.println("-------- Enter Employee Information --------");
         System.out.print(">> Last Name               : ");
         lastName = sc.nextLine();
