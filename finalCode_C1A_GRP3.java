@@ -25,6 +25,7 @@ public class finalCode_C1A_GRP3 {
             System.out.println();
             
             inputEmployeeInfo();
+            System.out.println();
             printPayslip();
 
             System.out.print("\n>> Do you want to compute again? (Y/N): ");
@@ -97,7 +98,7 @@ public class finalCode_C1A_GRP3 {
     }
 
     public static void printPayslip() {
-        System.out.println("\n=============================================");
+        System.out.println("===============================================");
         System.out.println("             EMPLOYEE PAY SLIP                 ");
         System.out.println("===============================================");
         System.out.printf("Name        : %s, %s %s%n", lastName, firstName, middleName);
