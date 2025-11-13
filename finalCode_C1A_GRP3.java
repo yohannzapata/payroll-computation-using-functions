@@ -17,6 +17,9 @@ public class finalCode_C1A_GRP3 {
     static double ratePerHour;
     static int hoursWorked;
 
+    // TODO: add variable for number of dependents?
+    // TODO: add variable for overtime hours?????
+
     public static void main(String[] args) {
         do {
             System.out.println("=============================================");
@@ -54,38 +57,43 @@ public class finalCode_C1A_GRP3 {
         ratePerHour = sc.nextDouble();
         System.out.print(">> Hours Worked            : ");
         hoursWorked = sc.nextInt();
+
+        // TODO: ask user for number of dependents
+        // TODO: weekly hours to monthly conversion??
     }
 
     public static double computeGP() {
+        // TODO: overtime computation
+        // TODO: 4 weeks per month in computation
         return ratePerHour * hoursWorked;
     }
 
     public static double computeDed() {
-        double totalDeduction = computeSSS(computeGP()) + 
-                                computePagIBIG(computeGP()) + 
-                                computePhilHealth() + 
-                                computeTax(computeGP());
-                                
+        // TODO: include dependent deduction
+        double totalDeduction = computeSSS(computeGP()) + computePagIBIG(computeGP()) + computePhilHealth() + computeTax(computeGP());
+        // TODO: add deduction that lines up with the project requirements
         return totalDeduction;
     }
 
     public static double computeNP() {
+        // TODO: need manager allowance
+        // TODO: need deductions and overtime properly setup
         return computeGP() - computeDed();
     }
 
     public static double computeSSS(double gp) {
-        if (gp <= 5000) return 105;
-        else if (gp <= 10000) return gp * 0.05;
-        else if (gp <= 15000) return gp * 0.08 + 75;
-        else return gp * 0.12 + 110;
+        return (gp <= 5000) ? 105 :
+               (gp <= 10000) ? gp * 0.05 :
+               (gp <= 15000) ? gp * 0.08 + 75 :
+                               gp * 0.12 + 110;
     }
 
     public static double computePagIBIG(double gp) {
-        if(gp < 5000) return 100;
-        else return gp * 0.03f;
+        return (gp < 5000) ? 100 : gp * 0.03f;
     }
 
     public static double computePhilHealth() {
+        // TODO: double check logic if it fits project requirements 
         if(hoursWorked >= 10) return 120;
         else return 0;
     }
@@ -101,9 +109,9 @@ public class finalCode_C1A_GRP3 {
         System.out.println("===============================================");
         System.out.println("             EMPLOYEE PAY SLIP                 ");
         System.out.println("===============================================");
-        System.out.printf("Name        : %s, %s %s%n", lastName, firstName, middleName);
-        System.out.printf("Department  : %s%n", department);
-        System.out.printf("Position    : %s%n", position);
+        System.out.printf("Name             : %s, %s %s%n", lastName, firstName, middleName);
+        System.out.printf("Department       : %s%n", department);
+        System.out.printf("Position         : %s%n", position);
         System.out.println("----------------------------------------------");
         System.out.printf("Gross Pay        : %.2f%n", computeGP());
         System.out.printf("SSS Contribution : %.2f%n", computeSSS(computeGP()));
@@ -114,5 +122,7 @@ public class finalCode_C1A_GRP3 {
         System.out.printf("Total Deduction  : %.2f%n", computeDed());
         System.out.printf("Net Pay          : %.2f%n", computeNP());
         System.out.println("==============================================");
+        // TODO: display manager allowance??
+        // TODO: display dependent deduction here
     }
 }
