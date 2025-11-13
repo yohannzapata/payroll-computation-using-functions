@@ -89,7 +89,8 @@ public class finalCode_C1A_GRP3 {
     }
 
     public static double computePagIBIG(double gp) {
-        return (gp < 5000) ? 100 : gp * 0.03f;
+        if (gp < 5000) return 100;
+        else return gp * 0.03f;
     }
 
     public static double computePhilHealth() {
