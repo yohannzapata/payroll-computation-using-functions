@@ -82,10 +82,10 @@ public class finalCode_C1A_GRP3 {
     }
 
     public static double computeSSS(double gp) {
-        return (gp <= 5000) ? 105 :
-               (gp <= 10000) ? gp * 0.05 :
-               (gp <= 15000) ? gp * 0.08 + 75 :
-                               gp * 0.12 + 110;
+        if(gp <= 5000) return 105;
+        else if(gp <= 5000) return gp * 0.05f;
+        else if(gp <= 15000) return gp * 0.08 + 75;
+        else return gp * 0.12 + 110;
     }
 
     public static double computePagIBIG(double gp) {
