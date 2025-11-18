@@ -56,8 +56,6 @@ public class finalCode_C1A_GRP3 {
             System.out.println();
             
             printPayslip();
-            
-            System.out.println();
 
             System.out.print("\n>> Do you want to compute again? (Y/N): ");
             choice = sc.next();
